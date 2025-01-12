@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+</head>
+<body>
+<style>
+    body {
+        font-family: Arial;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100px;
+    }
+    h1{
+        margin-top: 30px;
+        color: black;
+
+    }
+    form{
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    input{
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+    }
+
+    button{
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #0022ff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+    <h1>Это мой супер пупер проект под названием Узнай ПОГОДУ</h1>
+    <form method="post">
+        <input type="text" name="city" placeholder="Введите название города">
+        <button type="submit">Узнать погоду</button>
+    </form>
+
+    {% if weather_data %}
+        {% if "error" in weather_data %}
+            <p>{{ weather_data.error }}</p>
+        {% else %}
+            <h2>Погода в городе {{ weather_data.city }}</h2>
+            <p>Температура в этом городе равна {{weather_data.temperature_c }}</p>
+            <p>Скорость ветра в этом городе {{weather_data.wind_kph }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
