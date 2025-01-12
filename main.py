@@ -19,6 +19,15 @@ def index():
 
 
 
+@app.route('/weathers', methods=['GET','POST'])
+def index():
+    weather_data = True
+    a = 5
+    if request.method == "POST":
+        city = request.form['city']
+        if city:
+            weather_data = get_weather(city)
+    return render_template('asdasasds.html', weather_data=weather_data)
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=80)
